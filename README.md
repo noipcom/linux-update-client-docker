@@ -8,7 +8,7 @@ This docker image is based on our Official Linux DUC version 3, which you can re
 ## Getting Started
 1. Pull the docker container from Github Container Registry (GHCR)
 
-`docker pull ghcr.io/noipcom/docker-update-client/noip-duc:latest`
+`docker pull ghcr.io/noipcom/noip-duc:latest`
 
 2. Create an .env file (e.g., noip-duc.env) in a safe place, which includes your No-IP credentials. 
 
@@ -28,7 +28,7 @@ Make sure to replace `DdnsKeyUser`, `DdnsKeyPass`, and the hostnames with your a
 
 3. Run the Docker container with the environment file with the following command:
 
-`docker run -d --env-file noip-duc.env --name noip-duc ghcr.io/noipcom/docker-update-client/noip-duc:latest`
+`docker run -d --env-file noip-duc.env --name noip-duc ghcr.io/noipcom/noip-duc:latest`
 
 Note: There are additional Environment Variables which can be viewed by running `docker run noip-duc --help`.
 

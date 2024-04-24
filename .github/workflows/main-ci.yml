@@ -41,5 +41,5 @@ jobs:
         push: true
         provenance: false
         tags: |
-          ghcr.io/${{ github.repository }}/noip-duc:latest
-          ghcr.io/${{ github.repository }}/noip-duc:${{ env.VERSION }}
+          ghcr.io/noipcom/noip-duc:latest
+          ghcr.io/noipcom/noip-duc:${{ env.VERSION }}

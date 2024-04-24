@@ -19,7 +19,7 @@ jobs:
       with:
         registry: ghcr.io
         username: ${{ github.repository_owner }}
-        password: ${{ secrets.deploykey }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     - name: set up qemu
       uses: docker/setup-qemu-action@v3

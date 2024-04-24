@@ -1,11 +1,15 @@
 name: Build and Push Docker Image for ARM, AMD64 and ARM64 
 on:
   push:
+    branches:
+      - main
+
+env: 
+  VERSION: '3.1.1'
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -32,8 +36,10 @@ jobs:
       with:
         context: .
         platforms: linux/amd64,linux/arm64,linux/arm/v7
-        tags: ghcr.io/${{ github.repository }}/noip-duc:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
         push: true
         provenance: false
+        tags: |
+          ghcr.io/noipcom/noip-duc:latest
+          ghcr.io/noipcom/noip-duc:${{ env.VERSION }}

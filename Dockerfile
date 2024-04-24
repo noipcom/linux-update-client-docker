@@ -1,6 +1,6 @@
 FROM rust:1.77-slim-bookworm as builder
 LABEL org.opencontainers.image.authors="No-IP Team <support@noip.com>"
-LABEL org.opencontainers.image.source="https://github.com/noipcom/docker-update-client"
+LABEL org.opencontainers.image.source="https://github.com/noipcom/linux-update-client-docker"
 LABEL org.opencontainers.image.description="Update Client for No-IP's Dynamic DNS service"
 
 ARG VERSION=3.1.1

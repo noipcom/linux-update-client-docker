@@ -10,7 +10,7 @@ This docker image is based on our Official Linux DUC version 3, which you can re
 
 `docker pull ghcr.io/noipcom/noip-duc:latest`
 
-2. Create an .env file (e.g., noip-duc.env) in a safe place, which includes your No-IP credentials. 
+2. Create an .env file (e.g. noip-duc.env) in a safe place, which includes your No-IP credentials. 
 
 For security and convenience, it's best to store your No-IP credentials in an environment file (.env) rather than entering them directly in the command line. Since you are storing sensitive information here, make sure you set the permissions appropriately, ideally `0600`.
 

@@ -10,7 +10,8 @@ RUN apt update \
  && apt install -y ca-certificates wget \
  && wget https://dmej8g5cpdyqd.cloudfront.net/downloads/noip-duc_${VERSION}.tar.gz \
  && tar xzf noip-duc_${VERSION}.tar.gz -C /tmp/ \
- && rm noip-duc_${VERSION}.tar.gz
+ && rm noip-duc_${VERSION}.tar.gz \
+ && rm -rf /var/lib/apt/lists/* 
 
 WORKDIR /tmp/noip-duc_${VERSION} 
 
@@ -20,7 +21,8 @@ FROM debian:bookworm-slim
 ARG VERSION=3.1.1
 
 RUN apt update \
- && apt install -y ca-certificates
+ && apt install -y ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder /tmp/noip-duc_${VERSION}/target/release/noip-duc /usr/bin
 

@@ -47,13 +47,11 @@ NOIP_HOSTNAMES=all.ddnskey.com
 Note that with DDNS Keys, you do NOT need to specify a hostname in your configuration. The hostname `all.ddnskey.com` is used for ALL DDNS Keys.
 
 ### Groups
-No-IP's [Groups](https://www.noip.com/support/knowledgebase/limit-hostnames-updated-dynamic-dns-client/) is an older, legacy version of DDNS Keys. We are working to push new users to use DDNS Keys, but if you already have Groups configured, you are welcome to use them with the Linux DUC.
+No-IP's [Groups](https://www.noip.com/support/knowledgebase/limit-hostnames-updated-dynamic-dns-client/) is an older, legacy version of DDNS Keys. We recommend users utilize DDNS Keys instead of Groups, but if you already have Groups configured, you are welcome to use them with the Linux DUC.
 
-Simply include the groupname, username and password, along with the hostname you want to update in the docker command or the ENV file.
+Simply include the groupname, username and password, along with the hostnames you want to update in the docker command or the ENV file.
 
 For example, if you created a group named `mygroup`, and your No-IP account username was `myusername`, your username in the configuration file should look like: `mygroup:myusername`
-
-Enter the group password you set as your password, and specify the hostname you want to update. It must be selected in your Groups configuration to update correctly.
 
 ```
 # noip-duc.env with Groups

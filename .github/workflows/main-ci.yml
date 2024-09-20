@@ -1,11 +1,11 @@
-name: Build and Push Docker Image for ARM, AMD64 and ARM64 
+name: Build and Push Docker Image for AMD64, ARM64 & ARMv7
 on:
   push:
     branches:
       - main
 
 env: 
-  VERSION: '3.2.0'
+  VERSION: '3.3.0'
 
 jobs:
   build-and-push:

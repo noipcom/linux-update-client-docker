@@ -32,6 +32,21 @@ Make sure to replace `DdnsKeyUser`, `DdnsKeyPass`, and the hostnames with your a
 
 Note: There are additional Environment Variables which can be viewed by running `docker run noip-duc --help`.
 
+### Getting Started - Docker Compose
+
+Alternatively, you can use our [Docker Compose file](compose.yaml) included in the repository to restart automatically. Be sure to make
+sure the `noip-duc.env` environment file has been defined.
+
+To start the service run:
+```bash
+docker compose up -d
+```
+
+To stop the service run:
+```bash
+docker compose down
+```
+
 ### DDNS Keys
 [DDNS Keys](https://www.noip.com/support/knowledgebase/how-to-setup-and-use-a-ddns-key) are a feature introduced by No-IP to make updating a hostname more secure. It works by creating a brand new, randomly generated username and password for each hostname.
 

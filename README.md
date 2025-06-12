@@ -80,7 +80,7 @@ To update your host to an IPv6 address you will need to create a new hostname as
 
 To enable No-IP's IPv6 update method add the following line to your ENV file:
 
-`IP_METHOD=http://ip1.dynupdate6.no-ip.com/`
+`NOIP_IP_METHOD=http://ip1.dynupdate6.no-ip.com/`
 
 ### Help
 There are more options available in the Linux DUC that we will not cover here. To see all available options, run the following command in your terminal:

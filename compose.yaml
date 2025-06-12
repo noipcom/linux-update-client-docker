@@ -6,3 +6,8 @@ services:
     image: ghcr.io/noipcom/noip-duc:latest
     env_file: noip-duc.env  # for additional env variables
     restart: always         # will restart after server reset
+    networks:
+      - noip_duc
+networks:
+  noip_duc:
+    enable_ipv6: true

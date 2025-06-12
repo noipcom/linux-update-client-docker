@@ -1,106 +1,146 @@
 # No-IP Linux DUC for Docker
+<div align="center">
 
-## Description
-The No-IP update client for Docker is a handy tool that automates the process of keeping your dynamic IP address in sync with your No-IP hostname(s). In simpler terms, it helps you make sure that your domain name (like camera.ddns.net) always points to your current IP address.
+![Version](https://img.shields.io/badge/dynamic/yaml?url=https://raw.githubusercontent.com/noipcom/linux-update-client-docker/main/.github/workflows/main-ci.yml&query=$.env.VERSION&label=version&style=for-the-badge&color=#8fbe00)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/noipcom/linux-update-client-docker/main-ci.yml?style=for-the-badge)
+![Platform](https://img.shields.io/badge/platform-docker-blue?style=for-the-badge)
+![Docker Pulls](https://img.shields.io/docker/pulls/noipcom/noip-duc?style=for-the-badge)
+![GitHub License](https://img.shields.io/github/license/noipcom/linux-update-client-docker?style=for-the-badge&color=#8fbe00)
 
-This docker image is based on our Official Linux DUC version 3, which you can read more about [here](https://www.noip.com/support/knowledgebase/install-linux-3-x-dynamic-update-client-duc/).
+**🚀 Automated Dynamic DNS Updates Made Simple**
 
-## Getting Started
-1. Pull the docker container from Github Container Registry (GHCR)
+*Keep your domain name pointing to your current IP address, automatically*
 
-`docker pull ghcr.io/noipcom/noip-duc:latest`
+</div>
 
-2. Create an .env file (e.g. noip-duc.env) in a safe place, which includes your No-IP credentials. 
+---
 
-For security and convenience, it's best to store your No-IP credentials in an environment file (.env) rather than entering them directly in the command line. Since you are storing sensitive information here, make sure you set the permissions appropriately, ideally `0600`.
+## 📋 Description
+The No-IP update client for Docker is a handy tool that automates the process of keeping your dynamic IP address in sync with your No-IP hostname(s). In simpler terms, it helps you make sure that your domain name (like `camera.ddns.net`) always points to your current IP address.
 
-These environment variables can be passed to docker with [--env-file](https://docs.docker.com/engine/reference/commandline/run/#env) or to docker-compose as [env_file:](https://docs.docker.com/compose/environment-variables/set-environment-variables/). Docker compose will also look for .env file in the same directory.
+> 💡 This docker image is based on our [Official Linux DUC version 3](https://www.noip.com/download?page=linux), providing enterprise-grade reliability in a containerized format.
 
-Example configuration file (noip-duc.env):
+## 🚀 Quick Start
+
+### 1. Pull the docker container from Github Container Registry (GHCR)
+
+``` bash
+docker pull ghcr.io/noipcom/noip-duc:latest
 ```
+
+### 2. Create Your Configuration
+
+Create an `.env` file (e.g. `noip-duc.env`) in a secure location with your No-IP credentials: 
+
+> ⚠️ **Security Note**: Set appropriate permissions on your env file, ideally `0600`
+
+``` bash
 # noip-duc.env with DDNS Key
 NOIP_USERNAME=DdnsKeyUser
 NOIP_PASSWORD=DdnsKeyPass
 NOIP_HOSTNAMES=all.ddnskey.com
 ```
 
-Make sure to replace `DdnsKeyUser`, `DdnsKeyPass`, and the hostnames with your actual No-IP account credentials and hostname or `all.ddnskey.com` if you are using a DDNS Key.
+**Reminder**: Replace `DdnsKeyUser`, `DdnsKeyPass`, and the hostnames with your actual No-IP account credentials and hostname or `all.ddnskey.com` as the hostname if you are using a DDNS Key.
 
-3. Run the Docker container with the environment file with the following command:
+### 3. Run the Container
 
-`docker run -d --env-file noip-duc.env --name noip-duc ghcr.io/noipcom/noip-duc:latest`
-
-Note: There are additional Environment Variables which can be viewed by running `docker run noip-duc --help`.
-
-### Getting Started - Docker Compose
-
-Alternatively, you can use our [Docker Compose file](compose.yaml) included in the repository to restart automatically. Be sure to make
-sure the `noip-duc.env` environment file has been defined.
-
-To start the service run:
 ```bash
-docker compose up -d
+docker run -d --env-file noip-duc.env --name noip-duc ghcr.io/noipcom/noip-duc:latest
 ```
 
-To stop the service run:
-```bash
-docker compose down
-```
+> 💡 **Pro Tip**: Run `docker run noip-duc --help` to see all available environment variables and options.
 
-### DDNS Keys
-[DDNS Keys](https://www.noip.com/support/knowledgebase/how-to-setup-and-use-a-ddns-key) are a feature introduced by No-IP to make updating a hostname more secure. It works by creating a brand new, randomly generated username and password for each hostname.
+---
 
-Once you have [created](https://www.noip.com/support/knowledgebase/how-to-setup-and-use-a-ddns-key) a DDNS Key, you will need to include your credentials in your configuration file. For example, if your DDNS Key Username is `yf5f8n5` and your DDNS Key Password is `gHil56Bu`, your configuration file should look like this: 
+## 🔐 Authentication Methods
 
-```
+### DDNS Keys (Recommended)
+
+[DDNS Keys](https://www.noip.com/support/knowledgebase/how-to-setup-and-use-a-ddns-key) provide enhanced security with randomly generated credentials for each hostname.
+
+Once you have created a DDNS Key on your No-IP account, put it in your configuration (`.env` file). 
+
+If your DDNS Key Username is `yf5f8n5` and your DDNS Key Password is `gHil56Bu`, your configuration file should look like this: 
+
+``` bash
 # noip-duc.env with DDNS Key
 NOIP_USERNAME=yf5f7n5
 NOIP_PASSWORD=gHil56Bu
 NOIP_HOSTNAMES=all.ddnskey.com
 ```
 
-Note that with DDNS Keys, you do NOT need to specify a hostname in your configuration. The hostname `all.ddnskey.com` is used for ALL DDNS Keys.
+> ✨ **Note**: With DDNS Keys, use `all.ddnskey.com` as the hostname - no need to specify individual hostnames!
 
-### Groups
-No-IP's [Groups](https://www.noip.com/support/knowledgebase/limit-hostnames-updated-dynamic-dns-client/) is an older, legacy version of DDNS Keys. We recommend users utilize DDNS Keys instead of Groups, but if you already have Groups configured, you are welcome to use them with the Linux DUC.
+### 👥 Groups (Legacy)
 
-Simply include the groupname, username and password, along with the hostnames you want to update in the docker command or the ENV file.
-
-For example, if you created a group named `mygroup`, and your No-IP account username was `myusername`, your username in the configuration file should look like: `mygroup:myusername`
-
-```
+For existing Groups configurations:
+```bash
 # noip-duc.env with Groups
 NOIP_USERNAME=mygroup:myuser
 NOIP_PASSWORD=GroupPassword
 NOIP_HOSTNAMES=myhostname.ddns.net
 ```
 
-### IPv6
-To update your host to an IPv6 address you will need to create a new hostname as an AAAA (IPv6) type. You can read more about that [here](https://www.noip.com/support/knowledgebase/automatic-ipv6-updates-linux-duc)
+---
 
-To enable No-IP's IPv6 update method add the following line to your ENV file:
+## 🌐 IPv6 Support
 
-`NOIP_IP_METHOD=http://ip1.dynupdate6.no-ip.com/`
+Enable IPv6 updates by creating an AAAA (IPv6) type hostname and adding this to your ENV file:
 
-### Help
-There are more options available in the Linux DUC that we will not cover here. To see all available options, run the following command in your terminal:
+```bash
+IP_METHOD=http://ip1.dynupdate6.no-ip.com/
+```
 
-`docker run noip-duc --help`
+> 📖 Learn more about [IPv6 hostname creation](https://www.noip.com/support/knowledgebase/creating-ipv6-aaaa-host/)
 
-## Frequently Asked Questions (FAQ)
+---
 
-### How do I check if the update client is working?
-You can verify the update client's status by checking the container logs. Use this command to see the logs:
+## 🐳 Docker Compose Support
 
-`docker logs noip-duc`
+Thanks to XXXX for the help (merge request link), the noip-duc supports Docker Compose.
 
-### How do I update my No-IP credentials?
-If you need to change your No-IP credentials or hostname, simply update your environment file with the new values and restart the container using:
+We now include an example `compose.yaml` file in the repository.
 
-`docker restart noip-duc`
+Docker Compose will automatically look for a `.env` file in the same directory, or you can specify it with `env_file:` in your compose file.
 
-## Need help?
-Encountered a problem or have questions? Check our Github Issues page for previously reported bugs, and don't hesitate to create a [Support Ticket](https://www.noip.com/ticket). We're here to help you out!
+## 🛠️ Management
 
-## Contribution
-We love open-source and welcome any contributions. If you find a bug or want to suggest an improvement, feel free to create a pull request or an issue. Or you can always send your feedback to our support team at support@noip.com. 
+### Check Container Status
+```bash
+docker logs noip-duc
+```
+
+### Update Credentials
+1. Edit your environment file with new values
+2. Restart the container:
+```bash
+docker restart noip-duc
+```
+
+### Get Help
+```bash
+docker run noip-duc --help
+```
+
+---
+
+## 🤝 Support & Contribution
+
+![GitHub Issues](https://img.shields.io/github/issues/noipcom/linux-update-client-docker?style=for-the-badge)
+[![Support Ticket](https://img.shields.io/badge/Support-Create%20Ticket-blue?style=for-the-badge)](https://www.noip.com/ticket)
+
+### Need Help?
+- Check out our [Knowledge Base](https://github.com/noipcom/linux-update-client-docker/issues) for extensive documentation on all things No-IP
+- Create a [Support Ticket](https://www.noip.com/ticket) for technical assistance
+- Contact us at [support@noip.com](mailto:support@noip.com)
+
+### Want to Contribute?
+We welcome contributions! Feel free to:
+- [Submit an issue](https://github.com/noipcom/noip-duc/issues/new) for bugs
+- [Create a pull request](https://github.com/noipcom/noip-duc/pulls) for improvements
+
+<div align="center">
+
+**Made with ❤️ by the No-IP Team**
+</div>

@@ -1,4 +1,4 @@
-name: Build and Push Docker Image for AMD64, ARM64 & ARMv7 to GHCR & Dockerhub
+name: Build and Push Docker Image
 
 on:
   push:

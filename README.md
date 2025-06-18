@@ -51,6 +51,15 @@ docker run -d --env-file noip-duc.env --name noip-duc ghcr.io/noipcom/noip-duc:l
 
 > 💡 **Pro Tip**: Run `docker run noip-duc --help` to see all available environment variables and options.
 
+
+
+### Docker Compose
+
+Thanks for the help from our contributors, we now include an example `compose.yaml` file in the repository.
+
+Simply run `docker compose up` once you have filled in the noip-duc.env file with your credentials.
+
+
 ---
 
 ## 🔐 Authentication Methods
@@ -95,10 +104,6 @@ NOIP_IP_METHOD=http://ip1.dynupdate6.no-ip.com/
 > 📖 Learn more about [IPv6 hostname creation](https://www.noip.com/support/knowledgebase/creating-ipv6-aaaa-host/)
 
 ---
-
-## 🐳 Docker Compose Support
-
-Thanks for the help from our contributors, we now include an example `compose.yaml` file in the repository.
 
 ## 🛠️ Management
 

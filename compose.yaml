@@ -1,13 +1,16 @@
-# Docker compose script for noip's dynamic dns
-# Define NOIP_USERNAME, NOIP_PASSWORD and NOIP_HOSTNAMES in noip-duc.env file
+# Docker compose script for No-IP's dynamic dns
+# Define NOIP_USERNAME, NOIP_PASSWORD and NOIP_HOSTNAMES in .env file
 services:
   noip-duc:
     container_name: noip-duc
     image: ghcr.io/noipcom/noip-duc:latest
-    env_file: noip-duc.env  # for additional env variables
-    restart: always         # will restart after server reset
+    env_file: noip-duc.env
+    restart: unless-stopped
     networks:
-      - noip_duc
+      - noip-duc
+
 networks:
-  noip_duc:
-    enable_ipv6: true
+  noip-duc:
+    driver: bridge
+    # Uncomment the line below if you need IPv6
+    # enable_ipv6: true

@@ -1,7 +1,7 @@
 # No-IP Linux DUC for Docker
 <div align="center">
 
-![Version](https://img.shields.io/badge/dynamic/yaml?url=https://raw.githubusercontent.com/noipcom/linux-update-client-docker/main/.github/workflows/deploy.yml.yml&query=$.env.VERSION&label=version&style=for-the-badge&color=#8fbe00)
+![Version](https://img.shields.io/badge/dynamic/yaml?url=https://raw.githubusercontent.com/noipcom/linux-update-client-docker/main/.github/workflows/deploy.yml&query=$.env.VERSION&label=version&style=for-the-badge&color=#8fbe00)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/noipcom/linux-update-client-docker/deploy.yml?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/platform-docker-blue?style=for-the-badge)
 ![Docker Pulls](https://img.shields.io/docker/pulls/noipcom/noip-duc?style=for-the-badge)

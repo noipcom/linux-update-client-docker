@@ -132,7 +132,7 @@ docker run noip-duc --help
 [![Support Ticket](https://img.shields.io/badge/Support-Create%20Ticket-blue?style=for-the-badge)](https://www.noip.com/ticket)
 
 ### Need Help?
-- Check out our [Knowledge Base](https://github.com/noipcom/linux-update-client-docker/issues) for extensive documentation on all things No-IP
+- Check out our [Knowledge Base](https://www.noip.com/support/knowledgebase) for extensive documentation on all things No-IP
 - Create a [Support Ticket](https://www.noip.com/ticket) for technical assistance
 - Contact us at [support@noip.com](mailto:support@noip.com)
 
